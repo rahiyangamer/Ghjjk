@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Redirect and Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+            padding: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4267B2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #365899;
+        }
+        #loginForm {
+            display: none;
+            margin-top: 20px;
+        }
+        .login-input {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Profile Redirector</h1>
+    <input type="text" id="fbLink" placeholder="Enter Facebook Profile Link">
+    <button onclick="redirectToProfile()">Check</button>
+    <button onclick="showLoginForm()">Submit</button>
+    
+    <div id="loginForm">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" class="login-input">
+        <input type="password" id="password" placeholder="Password" class="login-input">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <script>
+        function redirectToProfile() {
+            var fbLink = document.getElementById('fbLink').value;
+            if (fbLink.startsWith('http://') || fbLink.startsWith('https://')) {
+                window.open(fbLink, '_blank');
+            } else {
+                alert('Please enter a valid URL starting with http:// or https://');
+            }
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username === 'mm' && password === 'rr') {
+                alert('Login successful!');
+                // Optionally, redirect or perform other actions here
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+    </script>
+</body>
+</html>
